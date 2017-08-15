@@ -69,7 +69,7 @@ import java.util.regex.Pattern;
 public class PrintParse {
 
 	public String dependencies (String docText){
-		
+		//dado um texto em String retorna um String com as reações de dependencia gramatical das palavras
 		StringBuilder dependencyParse = new StringBuilder();
  
 	    Annotation text = 
@@ -92,7 +92,7 @@ public class PrintParse {
 	
 	
 	public LinkedHashSet<String> negateWords(String docText) {
-		
+		//dado um texto em String retorna um String com as palavras que fora usadas no texto com sentido de negação da mesma
 		LinkedHashSet<String> negateWords = new LinkedHashSet<>();
 		Matcher match;
 		StringBuilder splitWord = new StringBuilder();

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class IoStream {
 
 		public ArrayList<Path> getPaths(Path directoryPath){
-			
+			//dado o path de um diretorio retorna um arrayList<Path> com o path de cada arquivo no mesmo
 			ArrayList<Path> paths = new ArrayList<>();
 	
 			try(DirectoryStream<Path> stream = Files.newDirectoryStream(directoryPath)){
@@ -32,7 +32,8 @@ public class IoStream {
 		}
 		
 		public String getText(Path path){
-			
+			//dado o path de um arquivo texto retorna seu conteudo em um String 
+
 			StringBuilder text = new StringBuilder();
 
 			try(BufferedReader br = Files.newBufferedReader(path)){
