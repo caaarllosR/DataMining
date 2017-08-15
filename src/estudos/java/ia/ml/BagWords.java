@@ -19,14 +19,14 @@ import estudos.java.xti.io.IoStream;
 
 public class BagWords {
 	
-	private LinkedHashSet<String> bagCollection = new LinkedHashSet<String>(); // armazena as palavras ao bag of words da colecao
-	private LinkedHashSet<String> bagCollectionAux = new LinkedHashSet<String>(); // armazena as palavras ao bag of words da colecao
+	private LinkedHashSet<String> bagCollection = new LinkedHashSet<String>(); // armazena as palavras ao bag of words da colecao de documentos
+	private LinkedHashSet<String> bagCollectionAux = new LinkedHashSet<String>(); // armazena as palavras ao bag of words da colecao de documentos
 	private LinkedHashSet<String> bagDoc = new LinkedHashSet<String>(); //armazena as palavras ao bag of words do documento
-	private LinkedHashMap<String, Integer> tf = new LinkedHashMap<String, Integer>(); // conta todas as vezes que a palavra aparece em toda colecao de documentos
-	private LinkedHashMap<String, Integer> df = new LinkedHashMap<String, Integer>(); // conta a aparição da palavra por documento
-	private LinkedHashMap<String, Integer> NWord = new LinkedHashMap<String, Integer>(); // conta quantos documentos na coleção tem uma certa palavra
+	private LinkedHashMap<String, Integer> tf = new LinkedHashMap<String, Integer>(); // conta a quantidade de vezes em que uma palavra da bagCollection aparece em toda colecao de documentos
+	private LinkedHashMap<String, Integer> df = new LinkedHashMap<String, Integer>(); // conta a quantidade de vezes em que uma palavra da bagCollection aparece por documento
+	private LinkedHashMap<String, Integer> NWord = new LinkedHashMap<String, Integer>(); // conta quantos documentos na coleção tem uma certa palavra da bagCollection
 	
-	public  void setContent(Path docsPath){ //adiciona as palavras na bag e um contador de mesmo indice na cWord
+	public  void setContent(Path docsPath){ //adiciona as palavras na bag e atualiza o LinkedHashMap "tf"
 		
 		int i = 0;
 		int j = 0;
@@ -68,7 +68,7 @@ public class BagWords {
 
 	}
 	
-	public void getDfCount(Path docPath){
+	public void getDfCount(Path docPath){// faz o calculo do DF
 
 		int i = 0;
 		IoStream ioStream = new IoStream();
@@ -98,12 +98,11 @@ public class BagWords {
 		return bagCollection;
 	}
 	
-	public void StopWordsTf(){ // remove palavras da bag mediante uma condição
+	public void StopWordsTf(){ // remove palavras da bag mediante uma condição, em breve utilizara o calculo do TF para condição
 			
 		bagCollectionAux.addAll(bagCollection);
 		
 		for(String s: bagCollectionAux){
-//			if ((NWord.get(s)<3000)){
 			if ((NWord.get(s)<3000)){
 				bagCollection.remove(s);
 				tf.remove(s);
