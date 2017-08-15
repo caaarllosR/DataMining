@@ -47,59 +47,12 @@ public class IoStream {
 		}		
 		
 		
-		public String writer(Path path, Charset utf8, String text){
+		public void writer(Path path, Charset utf8, String text){
 			
 			try(BufferedWriter wr = Files.newBufferedWriter(path, utf8)){
 			    wr.write(text);
 			}catch(IOException e){
 				e.printStackTrace();
-			}
-										
-			return text.toString();
+			}						
 		}
-	
-		
-		
-	public static void main(String[] args) throws IOException {
-		
-		
-
-		ArrayList<Path> paths = new ArrayList<>();
-		
-		Path arffPath = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest2/teste.arff");
-
-		Path docsPath = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest");
-		StringBuilder text = new StringBuilder();
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		IoStream ioStream = new IoStream();
-		
-		paths = ioStream.getPaths(docsPath);
-		Charset utf8 = StandardCharsets.UTF_8;
-		OpenOption options = StandardOpenOption.APPEND;
-		
-		Files.deleteIfExists(arffPath);
-		Files.createFile(arffPath);
-		
-		text.append(ioStream.getText(paths.get(2)));
-
-		try(BufferedWriter w = Files.newBufferedWriter(arffPath, utf8, options))	{
-			w.write(text.toString());
-		} catch (IOException e){
-			e.printStackTrace();
-		}
-		
-		text.delete(0, text.length());
-		text.append("\n")
-			.append(ioStream.getText(paths.get(2)));
-
-		try(BufferedWriter w = Files.newBufferedWriter(arffPath, utf8, options))	{
-			w.write(text.toString());
-		} catch (IOException e){
-			e.printStackTrace();
-		}
-		
-		bw.write(text.toString());
-		bw.flush();
-	}
-
 }

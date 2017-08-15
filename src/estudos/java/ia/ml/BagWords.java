@@ -1,6 +1,7 @@
 package estudos.java.ia.ml;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -118,37 +119,14 @@ public class BagWords {
 	
 	public static void main(String[] args) throws IOException {
 
-/*		Path dataSetPath1 = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest");
-				
-		Path docsPath = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest");
-
-		StringBuilder text = new StringBuilder();
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		File dp = new File("dataSetReduzido/neg");
+		Path negPath = Paths.get(dp.getAbsolutePath());
 		
-		BagWords bagWords = new BagWords();
-		bagWords.setContent(docsPath);
-
-		text.append(bagWords.bagCollection)
-			.append("\n")
-			.append(bagWords.tf);
-				
-		bw.write(text.toString());
-		bw.flush();*/
-						
-//		Path dataSetPath1 = Paths.get("D:/Dropbox/uerj/Java/Estudos/movie_review_dataset/part1/neg");
-//		Path dataSetPath2 = Paths.get("D:/Dropbox/uerj/Java/Estudos/movie_review_dataset/part2/neg");
-//		Path dataSetPath3 = Paths.get("D:/Dropbox/uerj/Java/Estudos/movie_review_dataset/part1/pos");
-//		Path dataSetPath4 = Paths.get("D:/Dropbox/uerj/Java/Estudos/movie_review_dataset/part2/pos");
+		dp = new File("dataSetReduzido/pos");
+		Path posPath = Paths.get(dp.getAbsolutePath());
 		
-//		Path dataSetPath1 = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest");
-//		Path dataSetPath2 = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest");
-//		Path dataSetPath3 = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest");
-//		Path dataSetPath4 = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest");
-		
-		Path dataSetPath1 = Paths.get("D:/Dropbox/uerj/Java/Estudos/datasetReduzido/neg");
-		Path dataSetPath4 = Paths.get("D:/Dropbox/uerj/Java/Estudos/datasetReduzido/pos");
-		
-		Path arffPath = Paths.get("D:/Dropbox/uerj/Java/Estudos/docsTest2/teste.arff");
+		dp = new File("resultTest/teste.arff");
+		Path arffPath = Paths.get(dp.getAbsolutePath());
 
 		ArrayList<Path> paths = new ArrayList<>();
 
@@ -167,24 +145,21 @@ public class BagWords {
 		rt.runFinalization();
 		rt.gc();
 		
-		System.out.println("bag 1");
-		bagWords.setContent(dataSetPath1);
-//		System.out.println("bag 2");
-//		bagWords.setContent(dataSetPath2);
-//		System.out.println("bag 3");
-//		bagWords.setContent(dataSetPath3);
-		System.out.println("bag 4");
-		bagWords.setContent(dataSetPath4);
+		System.out.println("etapa 1 de 5 - Bag of Words");
+		bagWords.setContent(negPath);
+
+		System.out.println("etapa 2 de 5 - Bag of Words");
+		bagWords.setContent(posPath);
 		
-		System.out.println("Stop Words");
+		System.out.println("etapa 3 de 5 - Stop Words");
 		bagWords.StopWordsTf();
 		
-		System.out.println("bagCollection size "+ bagWords.bagCollection.size());
+		System.out.println("Bag of Words size: "+ bagWords.bagCollection.size());
 
 		text.append("@relation avaliacao\n\n");	
 		
 
-		System.out.println("attributes");
+		System.out.println("criando arquivo arff");
 
 		for(String s : bagWords.bagCollection)	{
 				text.append("@attribute ").append(s).append("	NUMERIC\n");
@@ -205,9 +180,9 @@ public class BagWords {
 		rt.gc();
 		
 		
-		paths = ioStream.getPaths(dataSetPath1);
+		paths = ioStream.getPaths(negPath);
 
-		System.out.println("for 1");
+		System.out.println("etapa 4 de 5");
 
 		for(Path p : paths)	{
 
@@ -218,50 +193,22 @@ public class BagWords {
 						.append(",");
 			}					
 			text.append("negativo\n");						
+		}try	(BufferedWriter w = Files.newBufferedWriter(arffPath, utf8, options)) {
+			w.write(text.toString());
+		}catch (IOException e){
+			e.printStackTrace();
 		}
-			try	(BufferedWriter w = Files.newBufferedWriter(arffPath, utf8, options)) {
-				w.write(text.toString());
-			}catch (IOException e){
-				e.printStackTrace();
-			}
-			
-			text.delete(0,text.length());
-			
-			rt.runFinalization();
-			rt.gc();
-			
-				
-			
-/*		paths = ioStream.getPaths(dataSetPath2);
 		
-		System.out.println("for 2");
+		text.delete(0,text.length());
+		
+		rt.runFinalization();
+		rt.gc();
 
-		for(Path p : paths)	{
-
-			bagWords.getDfCount(p);
-
-			for(String s : bagWords.bagCollection)	{
-					text.append(bagWords.df.get(s))
-						.append(",");
-			}				 
-			text.append("negativo\n");			
-		}
-			try	(BufferedWriter w = Files.newBufferedWriter(arffPath, utf8, options)) {
-				w.write(text.toString());
-			}catch (IOException e){
-				e.printStackTrace();
-			}
 			
-			text.delete(0,text.length());
 			
-			rt.runFinalization();
-			rt.gc();
-				
-					
-					
-		paths = ioStream.getPaths(dataSetPath3);
+		paths = ioStream.getPaths(posPath);
 
-		System.out.println("for 3");
+		System.out.println("etapa 5 de 5");
 
 		for(Path p : paths)	{
 			
@@ -272,47 +219,19 @@ public class BagWords {
 						.append(",");
 			}
 			text.append("positivo\n");
+		}try	(BufferedWriter w = Files.newBufferedWriter(arffPath, utf8, options)) {
+			w.write(text.toString());
+		}catch (IOException e){
+			e.printStackTrace();
 		}
-			try	(BufferedWriter w = Files.newBufferedWriter(arffPath, utf8, options)) {
-				w.write(text.toString());
-			}catch (IOException e){
-				e.printStackTrace();
-			}
-							
-			text.delete(0,text.length());
-			
-			rt.runFinalization();
-			rt.gc();*/							
-					
 		
-			
-		paths = ioStream.getPaths(dataSetPath4);
-
-		System.out.println("for 4");
-
-		for(Path p : paths)	{
-			
-			bagWords.getDfCount(p);
-
-			for(String s : bagWords.bagCollection)	{
-					text.append(bagWords.df.get(s))
-						.append(",");
-			}
-			text.append("positivo\n");
-		}
-			try	(BufferedWriter w = Files.newBufferedWriter(arffPath, utf8, options)) {
-				w.write(text.toString());
-			}catch (IOException e){
-				e.printStackTrace();
-			}
-			
-			text.delete(0,text.length());
-			
-			rt.runFinalization();
-			rt.gc();
+		text.delete(0,text.length());
+		
+		rt.runFinalization();
+		rt.gc();
 			
 									
-		System.out.println("Arquivo gerado");
+		System.out.println("Arquivo arff gerado");
 
 	}
 }
