@@ -8,9 +8,9 @@ Será utilizada uma base de dado avaliações de filmes.
 Link: http://edirlei.3dgb.com.br/aulas/ia_2014_2/movie_review_dataset.zip
 
 Serão utilizados 3 modelos diferentes para a formulação do conjunto de treinamento:
--bag-of-words 
--bag-of-words + TF-IDF
--modelo semântico utilizando o Stanford Parser*
+- bag-of-words 
+- bag-of-words + TF-IDF
+- modelo semântico utilizando o Stanford Parser*
 
 Serão utilizados 4 algoritmos diferentes de aprendizado supervisionado:
 - Árvores de Decisão
