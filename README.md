@@ -1,4 +1,5 @@
-# StanfordCoreNLP
+# Mineração de Dados - Análise de Sentimentos
+
 
 O objetivo deste projeto é desenvolver um sistema de análise de sentimento, que visa identificar o sentimento que usuários de sites, fóruns ou redes sociais apresentam a respeito de um certo produto através da análise de seus comentários escritos. 
 
