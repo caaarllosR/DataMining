@@ -27,7 +27,7 @@ http://edirlei.3dgb.com.br/aulas/ia_2016_2/Trabalho2.pdf
 
 
 *Para utilização das classes que implementam o modelo semântico é necessário adicionar a biblioteca "Stanford coreNLP".
-- Link: https://stanfordnlp.github.io/CoreNLP/download.html
+- Biblioteca: https://stanfordnlp.github.io/CoreNLP/download.html
 - Manual de dependências:
 https://nlp.stanford.edu/software/dependencies_manual.pdf
 - Versão de testes online (70 palavras ou menos):
