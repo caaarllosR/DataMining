@@ -19,7 +19,7 @@ Serão utilizados 4 algoritmos diferentes de aprendizado supervisionado:
 - Rede Neural (usando backpropagation)
 
 O objetivo final é encontrar a melhor combinação de base de treinamento e algoritmo de aprendizado, tendo como referência a melhor taxa de reconhecimento.
-
+O idioma dos cometários da base de dados será o inglês.
 
 Enunciado completo do problema:
 http://edirlei.3dgb.com.br/aulas/ia_2016_2/Trabalho2.pdf
