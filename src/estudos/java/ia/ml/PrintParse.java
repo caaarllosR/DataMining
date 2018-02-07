@@ -5,7 +5,8 @@ import edu.stanford.nlp.ling.*;
 //import edu.stanford.nlp.trees.*;
 import edu.stanford.nlp.semgraph.*;
 import edu.stanford.nlp.util.*;
-import estudos.java.xti.io.IoStream;
+import edu.stanford.nlp.trees.*;
+import estudos.java.io.IoStream;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -68,8 +69,9 @@ import java.util.regex.Pattern;
 
 public class PrintParse {
 
+	
 	public String dependencies (String docText){
-		//dado um texto em String retorna um String com as reações de dependencia gramatical das palavras
+		//dado um texto em String retorna um String com as reacoes de dependencia gramatical das palavras
 		StringBuilder dependencyParse = new StringBuilder();
  
 	    Annotation text = 
@@ -79,10 +81,11 @@ public class PrintParse {
 	    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 	    pipeline.annotate(text);
 	    SemanticGraph graph = null;
+	    List<CoreMap> sentences = text.get(CoreAnnotations.SentencesAnnotation.class);
 	    
-	    for (CoreMap sentence : text.get(CoreAnnotations.SentencesAnnotation.class)) {
-	      //Tree constituencyParse = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
-	      //System.out.println(constituencyParse);
+	    for (CoreMap sentence : sentences) {
+//	      Tree constituencyParse = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
+//	      System.out.println(constituencyParse);
 	      graph =
 	          sentence.get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
 	      dependencyParse.append(graph.toList());
@@ -92,7 +95,7 @@ public class PrintParse {
 	
 	
 	public LinkedHashSet<String> negateWords(String docText) {
-		//dado um texto em String retorna um String com as palavras que fora usadas no texto com sentido de negação da mesma
+		//dado um texto em String retorna um String com as palavras que fora usadas no texto com sentido de negaï¿½ï¿½o da mesma
 		LinkedHashSet<String> negateWords = new LinkedHashSet<>();
 		Matcher match;
 		StringBuilder splitWord = new StringBuilder();
@@ -130,10 +133,20 @@ public class PrintParse {
 	File dp = new File("docsTest/10_3.txt");
 	Path docsPath = Paths.get(dp.getAbsolutePath());
 	
+	bw.write("\n\nP -1 \n\n");
+	bw.flush(); 
+
 	docText = ioStream.getText(docsPath);
 	dependencies = parse.dependencies(docText);
-	negateWords = parse.negateWords(dependencies);         
+	
+	bw.write("\n\nP - 2 \n\n");
+	bw.flush(); 
 
+	negateWords = parse.negateWords(dependencies);         
+	
+
+	bw.write("\n\nP - 3 \n\n");
+	bw.flush(); 
 
 	bw.write("relacao de dependencia gramatical das palavras:\n\n");
 	bw.flush();
@@ -141,6 +154,9 @@ public class PrintParse {
 	bw.write(dependencies);
 	bw.flush();   
   
+	bw.write("\n\nP - 4 \n\n");
+	bw.flush(); 
+
 	bw.write("\n\npalavras negadas:\n\n");
 	bw.flush();
   

@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 
-import estudos.java.xti.io.IoStream;
+import estudos.java.io.IoStream;
 
 public class BagWords {
 	
@@ -24,7 +24,7 @@ public class BagWords {
 	private LinkedHashSet<String> bagDoc = new LinkedHashSet<String>(); //armazena as palavras ao bag of words do documento
 	private LinkedHashMap<String, Integer> tf = new LinkedHashMap<String, Integer>(); // conta a quantidade de vezes em que uma palavra da bagCollection aparece em toda colecao de documentos
 	private LinkedHashMap<String, Integer> df = new LinkedHashMap<String, Integer>(); // conta a quantidade de vezes em que uma palavra da bagCollection aparece por documento
-	private LinkedHashMap<String, Integer> NWord = new LinkedHashMap<String, Integer>(); // conta quantos documentos na coleção tem uma certa palavra da bagCollection
+	private LinkedHashMap<String, Integer> NWord = new LinkedHashMap<String, Integer>(); // conta quantos documentos na coleï¿½ï¿½o tem uma certa palavra da bagCollection
 	
 	public  void setContent(Path docsPath){ //adiciona as palavras na bag e atualiza o LinkedHashMap "tf"
 		
@@ -98,7 +98,7 @@ public class BagWords {
 		return bagCollection;
 	}
 	
-	public void StopWordsTf(){ // remove palavras da bag mediante uma condição, em breve utilizara o calculo do TF para condição
+	public void StopWordsTf(){ // remove palavras da bag mediante uma condiï¿½ï¿½o, em breve utilizara o calculo do TF para condiï¿½ï¿½o
 			
 		bagCollectionAux.addAll(bagCollection);
 		
