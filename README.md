@@ -1,22 +1,8 @@
-# Mineração de Dados - Análise de Sentimentos
+# Mineração de Dados - Análise Comentários em sites, fóruns ou redes sociais
 
 
-O objetivo deste projeto é desenvolver um sistema de análise de sentimento, que visa identificar o sentimento que usuários de sites, fóruns ou redes sociais apresentam a respeito de um certo produto através da análise de seus comentários escritos. 
+O objetivo deste projeto é desenvolver um sistema capaz de analisar comentários* de usuários de sites, fóruns ou redes sociais a respeito de um certo produto e classificados em dois tipos: positivos e negativos. 
 
-Neste projeto os comentários* serão analisados e classificados em dois tipos: positivos e negativos. 
-
-Serão utilizados 3 modelos diferentes para a formulação da base de treinamento:
-- bag-of-words 
-- bag-of-words + TF-IDF
-- modelo semântico utilizando o Stanford Parser**
-
-Serão utilizados 4 algoritmos diferentes de aprendizado supervisionado:
-- Árvores de Decisão
-- K-Nearest Neighbor (KNN)
-- Support Vector Machine (SVM)
-- Rede Neural (usando backpropagation)
-
-O objetivo final é encontrar a melhor combinação entre base de treinamento e algoritmo de aprendizado, tendo como base para escolha da melhor opção a taxa de reconhecimento obtida.
 O idioma dos cometários da base de dados será o inglês.
 
 
