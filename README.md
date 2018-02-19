@@ -9,7 +9,7 @@ O idioma dos cometários da base de dados será o inglês.
 *Base de dados com comentários de avaliações de filmes.
 Link: https://drive.google.com/file/d/0B53-nM6ehYq9WjU1ZEJZNkp3Umc/view?usp=sharing
 
-**Para utilização das classes que implementam o modelo semântico é necessário adicionar a biblioteca "Stanford coreNLP".
+Para utilização das classes que implementam o modelo semântico é necessário adicionar a biblioteca "Stanford coreNLP".
 - Biblioteca: https://stanfordnlp.github.io/CoreNLP/download.html
 - Manual de dependências:
 https://nlp.stanford.edu/software/dependencies_manual.pdf
