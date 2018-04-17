@@ -1,5 +1,5 @@
-//Código criado utilizando a arvore de decisão J48 do weka
-//para mais detalhes sobre o código acessar o seguinte link:
+//Codigo criado utilizando a arvore de decisao J48 do weka
+//para mais detalhes sobre o codigo acessar o seguinte link:
 //https://docs.google.com/document/d/1p4vzEB75HRwzSQJeRzb2u-IAB8m6G7Q9nGy5s4-scwU/edit?usp=sharing
 
 package estudos.java.ia.dt;
@@ -68,7 +68,7 @@ public class WekaClassifier {
 	}
 
 	private void testaDados() throws Exception { 
-		//Os resultados respondem aos dados passados no arquivo arff em questão para cada linha linha de dados em @data
+		//Os resultados respondem aos dados passados no arquivo arff em questï¿½o para cada linha linha de dados em @data
 
 		info = new Object[5];
 		i = 2;

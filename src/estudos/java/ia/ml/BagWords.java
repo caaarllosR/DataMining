@@ -98,7 +98,7 @@ public class BagWords {
 		return bagCollection;
 	}
 	
-	public void StopWordsTf(){ // remove palavras da bag mediante uma condi��o, em breve utilizara o calculo do TF para condi��o
+	public void StopWordsTf(){ // remove palavras da bag mediante uma condicao, em breve utilizara o calculo do TF para condicao
 			
 		bagCollectionAux.addAll(bagCollection);
 		
@@ -230,7 +230,7 @@ public class BagWords {
 		rt.gc();
 			
 									
-		System.out.println("Arquivo arff gerado");
+		System.out.println("Arquivo arff gerado"); // sinaliza que o arquivo .arff com a base dados a ser usado no weka foi gerada com sucesso
 
 	}
 }
