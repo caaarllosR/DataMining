@@ -5,7 +5,6 @@ import edu.stanford.nlp.ling.*;
 //import edu.stanford.nlp.trees.*;
 import edu.stanford.nlp.semgraph.*;
 import edu.stanford.nlp.util.*;
-import edu.stanford.nlp.trees.*;
 import estudos.java.io.IoStream;
 
 import java.io.BufferedWriter;
@@ -60,11 +59,16 @@ import java.util.regex.Pattern;
  * 
  * [...]			agrupamento
  * [a-z]			alcanse
- * [a-e][i-u]		união
- * [a-z&&[aeiou]]	interseção
- * [^abc]			exceção
- * [a-z&&[^m-p]]	subtração
+ * [a-e][i-u]		uniao
+ * [a-z&&[aeiou]]	intersecao
+ * [^abc]			excecao
+ * [a-z&&[^m-p]]	subtracao
  * \x				fuga literal
+ * 
+ * Vaariaveis
+ * 
+ * (variavel)					$numerp da posicao
+ * (variavel1)(variavel2)		$1  $2
  */
 
 public class PrintParse {
@@ -95,21 +99,23 @@ public class PrintParse {
 	
 	
 	public LinkedHashSet<String> negateWords(String docText) {
-		//dado um texto em String retorna um String com as palavras que fora usadas no texto com sentido de nega��o da mesma
+		//dado um texto em String retorna um String com as palavras que foram usadas no texto com sentido de negacao da mesma
 		LinkedHashSet<String> negateWords = new LinkedHashSet<>();
 		Matcher match;
 		StringBuilder splitWord = new StringBuilder();
 		StringBuilder wordsDep = new StringBuilder();
+		Pattern pattern1 = Pattern.compile("(ccomp.*?\\-.*?-)|(acomp.*?\\-.*?-)|(amod.*?\\-.*?-)|(npadvmod.*?\\-)");
+		Pattern pattern2 = Pattern.compile("(ccomp.*?\\,|\\-)|(acomp.*?\\,|\\-)|(amod.*?\\,|\\-)|(npadvmod\\(|\\-)|\\s");
 		wordsDep.append(docText);
 		
-	    match = Pattern.compile("(ccomp.*?\\-.*?-)|(acomp.*?\\-.*?-)|(amod.*?\\-.*?-)|(npadvmod.*?\\-)").matcher(wordsDep);
+	    match = pattern1.matcher(wordsDep);
 	    
 	    while (match.find()){
-	    	splitWord.append((match.group().replaceAll("(ccomp.*?\\,|\\-)|(acomp.*?\\,|\\-)|(amod.*?\\,|\\-)|(npadvmod\\(|\\-)|\\s", "")).toLowerCase());
+	    	splitWord.append((match.group().replaceAll(pattern2.pattern(), "")).toLowerCase());
 	    	negateWords.add(splitWord.toString());
 	    	splitWord.delete(0,splitWord.length());
 	    	wordsDep.delete(0, wordsDep.indexOf(match.group())+match.group().length()-1);
-	        match = Pattern.compile("(ccomp.*?\\-.*?-)|(acomp.*?\\-.*?-)|(amod.*?\\-.*?-)|(npadvmod.*?\\-)").matcher(wordsDep);
+	        match = pattern1.matcher(wordsDep);
 	    }
 //		match = Pattern.compile("neg.*?\\-").matcher(wordsDep);
 //		
