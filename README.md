@@ -16,15 +16,9 @@ Java 8 SDK.
 # Data Mining - Analysis Comments on websites, forums or social networks
 
 
-The goal of this project is to develop a system capable of analyzing comments * from users of websites, forums or social networks regarding a certain product and classifying them into two types: positive and negative.
-The statistical models used for the extraction of characteristics will be the bag-of-words and the bag-of-words with TD-IF, in order to compare the results with each model.
-In addition to the statistical models, a semantic model will be used, the Stanford Parser, for comparison of results.
-Attributes will be separated to generate the training and validation base using each of the characteristic extraction models.
-The training and validation bases will be used in supervised learning algorithms, using the Weka Lib library.
-The language of the database comments will be English.
+The objective of this project is to develop a system capable of analyzing comments* from users of websites, forums or social networks regarding a certain product and classifying them into two types: positive and negative. For comparison purposes, two feature extraction models will be used, the bag-of-words and the bag-of-words with TD-IF. In addition to the statistical models, a semantic model of natural language will be used that can be found at https://nlp.stanford.edu/ and the Weka Lib library for the implementation of the neural network that will make the decisions about the comments. The language of the database comments will be English.
 
-To use the classes that implement the semantic model it is necessary to add the "Stanford coreNLP 3.8.0" library. Recently tests were made using version 3.9.1, but without success, changes in the CoreNLP library make the current code of this project incompatible with it, so it was decided to maintain the use of version 3.8.0, since it was stable and sufficient for the needs of the project.
-Java 8 SDK.
+To use the classes that implement the semantic model, it is necessary to add the library "Stanford coreNLP 3.8.0". Recently tests were made using version 3.9.1, but without success, the changes in the CoreNLP library make the current code of this project incompatible with it, so it was decided to keep using version 3.8.0, since it proved to be stable and enough for the needs of the project. Java 8 SDK.
 
 
 - *Base de dados com comentários de avaliações de filmes.
