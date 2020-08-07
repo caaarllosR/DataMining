@@ -2,7 +2,7 @@
 
 
 O objetivo deste projeto é desenvolver um sistema capaz de analisar comentários* de usuários de sites, fóruns ou redes sociais a respeito de um certo produto e classifica-los em dois tipos: positivos e negativos. 
-Os modelos estatísticos utilizados para a extração de características serão o bag-of-words e o bag-of-words com TD-IF, afim de serem comparados os resultados com cada modelo.
+Os modelos estatísticos utilizados para a extração de características serão o bag-of-words e o bag-of-words com TD-IF, afim de serem comparados os resultados de cada modelo.
 Além dos modelos estatísticos, será utilizado um modelo semântico utilizado o Stanford Parser, para comparação de resultados.
 Serão separados atributos para gerar a base de treinamento e de validação utilizando cada um dos modelos de extração de características.
 As bases de treinamento e de validação serão utilizados em algoritmos de aprendizado supervisionado, utilizando a biblioteca Weka Lib.
