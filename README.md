@@ -2,10 +2,8 @@
 
 
 O objetivo deste projeto é desenvolver um sistema capaz de analisar comentários* de usuários de sites, fóruns ou redes sociais a respeito de um certo produto e classifica-los em dois tipos: positivos e negativos. 
-Os modelos estatísticos utilizados para a extração de características serão o bag-of-words e o bag-of-words com TD-IF, afim de serem comparados os resultados de cada modelo.
-Além dos modelos estatísticos, será utilizado um modelo semântico utilizado o Stanford Parser, para comparação de resultados.
-Serão separados atributos para gerar a base de treinamento e de validação utilizando cada um dos modelos de extração de características.
-As bases de treinamento e de validação serão utilizados em algoritmos de aprendizado supervisionado, utilizando a biblioteca Weka Lib.
+Para fim de comparação serão utilizados dois modelos de extração de características, o bag-of-words e o bag-of-words com TD-IF.
+Além dos modelos estatísticos, será utilizado um modelo semântico de lingugem natural que pode ser encontrado em https://nlp.stanford.edu/ e a biblioteca Weka Lib para implementação da rede neural que tomará as decisões a cerca dos comentários.
 O idioma dos cometários da base de dados será o inglês.
 
 Para utilização das classes que implementam o modelo semântico é necessário adicionar a biblioteca "Stanford coreNLP 3.8.0". Recentemente foram feitos testes utilizando a versão 3.9.1, mas sem sucesso, as mudanças na biblioteca CoreNLP tornam o código atual deste projeto incompatível com a mesma, ficando assim decidido manter a utilização da versão 3.8.0, já que ela se mostrou estável e suficiente para as necessidade do projeto.
